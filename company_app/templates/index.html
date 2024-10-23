@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AS Software Solutions - Advanced Technology Services</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #3B82F6, #8B5CF6, #EC4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradient 6s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        .tech-pattern {
+            background-image: 
+                radial-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+                radial-gradient(rgba(139, 92, 246, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+
+        .glass-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .gradient-border {
+            position: relative;
+            background: linear-gradient(45deg, #3B82F6, #8B5CF6, #EC4899);
+            padding: 1px;
+            border-radius: 16px;
+        }
+
+        .gradient-border > div {
+            background: #111827;
+            height: 100%;
+            border-radius: 16px;
+        }
+
+        .animated-gradient {
+            background: linear-gradient(45deg, #3B82F6, #8B5CF6, #EC4899);
+            background-size: 200% 200%;
+            animation: gradient 6s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .tech-stack-icon {
+            transition: all 0.3s ease;
+        }
+
+        .tech-stack-icon:hover {
+            transform: scale(1.2);
+            filter: brightness(1.2);
+        }
+
+        .service-card {
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, #3B82F6, #8B5CF6);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .glow {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(10px);
+            background: rgba(17, 24, 39, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 nav-blur">
+        <div class="container mx-auto px-6">
+            <div class="relative flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg animate-pulse"></div>
+                        <span class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold text-xl">AS</span>
+                    </div>
+                    <span class="text-2xl font-bold gradient-text">AS Software Solutions</span>
+                </div>
+                
+                <div class="hidden lg:flex space-x-8">
+                    <a href="#home" class="text-white hover:text-blue-400 transition-colors">Home</a>
+                    <a href="#services" class="text-white hover:text-blue-400 transition-colors">Services</a>
+                    <a href="#tech-stack" class="text-white hover:text-blue-400 transition-colors">Tech Stack</a>
+                    <a href="#portfolio" class="text-white hover:text-blue-400 transition-colors">Portfolio</a>
+                    <a href="#testimonials" class="text-white hover:text-blue-400 transition-colors">Testimonials</a>
+                    <a href="#contact" class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all">
+                        Start Project
+                    </a>
+                </div>
+
+                <button class="lg:hidden text-white text-2xl" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-gray-800 p-4">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="text-white hover:text-blue-400">Home</a>
+                <a href="#services" class="text-white hover:text-blue-400">Services</a>
+                <a href="#tech-stack" class="text-white hover:text-blue-400">Tech Stack</a>
+                <a href="#portfolio" class="text-white hover:text-blue-400">Portfolio</a>
+                <a href="#testimonials" class="text-white hover:text-blue-400">Testimonials</a>
+                <a href="#contact" class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-2 rounded-full text-center">
+                    Start Project
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center relative overflow-hidden tech-pattern">
+        <div class="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-blue-900/90"></div>
+        <div class="container mx-auto px-6 relative z-10 py-32">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <h1 class="text-5xl lg:text-6xl font-bold mb-6">
+                        Transform Your Ideas Into
+                        <span class="gradient-text">Digital Reality</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-8">
+                        Leverage our expertise in software development, web applications, mobile apps, AI/ML solutions, and chatbot development to drive your business forward.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contact" class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full text-center font-bold hover:shadow-lg transition-all transform hover:scale-105">
+                            Start Your Project
+                        </a>
+                        <a href="#services" class="border-2 border-white text-white px-8 py-4 rounded-full text-center font-bold hover:bg-white hover:text-gray-900 transition-colors">
+                            Explore Services
+                        </a>
+                    </div>
+                    
+                    <!-- Scroll Indicator -->
+                    <div class="hidden lg:block absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
+                        <i class="fas fa-chevron-down text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative floating" data-aos="fade-left">
+                    <div class="relative z-10">
+                        <div class="code-block bg-gray-800 p-6 rounded-lg shadow-xl">
+                            <pre class="text-sm text-blue-400">
+class DigitalSolution {
+    constructor() {
+        this.technologies = [
+            'Web Development',
+            'Mobile Apps',
+            'AI/ML Solutions',
+            'Chatbots'
+        ];
+    }
+
+    transform(idea) {
+        return this.technologies.map(
+            tech => new Innovation(idea, tech)
+        );
+    }
+}</pre>
+                        </div>
+                    </div>
+                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-blue-500 to-purple-500 blur-3xl opacity-20 animate-pulse"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="services" class="py-20 bg-gray-900 relative overflow-hidden">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="tech-pattern"></div>
+        </div>
+    
+        <div class="container mx-auto px-6 relative">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">Our Services</h2>
+                <p class="text-gray-400 text-xl">Comprehensive Technology Solutions for Your Business</p>
+            </div>
+    
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Software Development -->
+                <div class="glass-card rounded-xl p-8 transform hover:-translate-y-2 transition-all duration-300" data-aos="fade-up">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-laptop-code text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Software Development</h3>
+                    <p class="text-gray-400 mb-6">Custom software solutions tailored to your business needs.</p>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Enterprise Solutions
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Cloud Applications
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Database Management
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            API Integration
+                        </li>
+                    </ul>
+                    <button class="mt-8 w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all">
+                        Learn More
+                    </button>
+                </div>
+    
+                <!-- Website Development -->
+                <div class="glass-card rounded-xl p-8 transform hover:-translate-y-2 transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-globe text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Website Development</h3>
+                    <p class="text-gray-400 mb-6">Stunning, responsive websites that drive results.</p>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            E-commerce Solutions
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            CMS Development
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Progressive Web Apps
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            SEO Optimization
+                        </li>
+                    </ul>
+                    <button class="mt-8 w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all">
+                        Learn More
+                    </button>
+                </div>
+    
+                <!-- AI/ML Solutions -->
+                <div class="glass-card rounded-xl p-8 transform hover:-translate-y-2 transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-brain text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">AI/ML Solutions</h3>
+                    <p class="text-gray-400 mb-6">Intelligent solutions powered by advanced AI/ML.</p>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Predictive Analytics
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Computer Vision
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Natural Language Processing
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Machine Learning Models
+                        </li>
+                    </ul>
+                    <button class="mt-8 w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all">
+                        Learn More
+                    </button>
+                </div>
+    
+                <!-- App Development -->
+                <div class="glass-card rounded-xl p-8 transform hover:-translate-y-2 transition-all duration-300" data-aos="fade-up">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-mobile-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">App Development</h3>
+                    <p class="text-gray-400 mb-6">Native and cross-platform mobile applications.</p>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            iOS Development
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Android Development
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Cross-platform Apps
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            App Maintenance
+                        </li>
+                    </ul>
+                    <button class="mt-8 w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all">
+                        Learn More
+                    </button>
+                </div>
+    
+                <!-- Robotics (Coming Soon) -->
+                <div class="glass-card rounded-xl p-8 transform hover:-translate-y-2 transition-all duration-300 relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-sm">Coming Soon</span>
+                    </div>
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-robot text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Robotics</h3>
+                    <p class="text-gray-400 mb-6">Advanced robotics solutions for automation.</p>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Industrial Automation
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Robot Programming
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Process Optimization
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Custom Robotics Solutions
+                        </li>
+                    </ul>
+                    <button class="mt-8 w-full bg-gradient-to-r from-gray-500 to-gray-600 text-white px-6 py-3 rounded-full cursor-not-allowed opacity-75">
+                        Coming Soon
+                    </button>
+                </div>
+    
+                <!-- IoT (Coming Soon) -->
+                <div class="glass-card rounded-xl p-8 transform hover:-translate-y-2 transition-all duration-300 relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-sm">Coming Soon</span>
+                    </div>
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-microchip text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">IoT Solutions</h3>
+                    <p class="text-gray-400 mb-6">Connected device solutions for the modern world.</p>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Smart Home Solutions
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Industrial IoT
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            IoT Data Analytics
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Sensor Networks
+                        </li>
+                    </ul>
+                    <button class="mt-8 w-full bg-gradient-to-r from-gray-500 to-gray-600 text-white px-6 py-3 rounded-full cursor-not-allowed opacity-75">
+                        Coming Soon
+                    </button>
+                </div>
+            </div>
+    
+            <!-- Call to Action -->
+            <div class="mt-20 text-center" data-aos="fade-up">
+                <h3 class="text-2xl font-bold mb-6">Ready to Transform Your Business?</h3>
+                <p class="text-gray-400 mb-8 max-w-2xl mx-auto">
+                    Let's discuss how our services can help you achieve your business goals. Schedule a free consultation today.
+                </p>
+                <a href="#contact" class="inline-block bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-bold hover:shadow-lg transition-all transform hover:scale-105">
+                    Schedule Consultation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="tech-stack" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">Our Tech Stack</h2>
+                <p class="text-gray-400">Cutting-edge technologies we use to build your solutions</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                <!-- Tech Icons -->
+                <div class="tech-stack-icon p-6 glass-card rounded-xl text-center" data-aos="zoom-in">
+                    <i class="fab fa-react text-4xl text-blue-400 mb-4"></i>
+                    <p>React</p>
+                </div>
+                <div class="tech-stack-icon p-6 glass-card rounded-xl text-center" data-aos="zoom-in">
+                    <i class="fab fa-node-js text-4xl text-green-400 mb-4"></i>
+                    <p>Node.js</p>
+                </div>
+                <div class="tech-stack-icon p-6 glass-card rounded-xl text-center" data-aos="zoom-in">
+                    <i class="fab fa-python text-4xl text-yellow-400 mb-4"></i>
+                    <p>Python</p>
+                </div>
+                <div class="tech-stack-icon p-6 glass-card rounded-xl text-center" data-aos="zoom-in">
+                    <i class="fab fa-aws text-4xl text-orange-400 mb-4"></i>
+                    <p>AWS</p>
+                </div>
+                <div class="tech-stack-icon p-6 glass-card rounded-xl text-center" data-aos="zoom-in">
+                    <i class="fab fa-android text-4xl text-green-500 mb-4"></i>
+                    <p>Android</p>
+                </div>
+                <div class="tech-stack-icon p-6 glass-card rounded-xl text-center" data-aos="zoom-in">
+                    <i class="fab fa-apple text-4xl text-gray-300 mb-4"></i>
+                    <p>iOS</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">Our Portfolio</h2>
+                <p class="text-gray-400">Showcasing our best work and success stories</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Portfolio Items -->
+                <div class="gradient-border" data-aos="fade-up">
+                    <div class="p-6">
+                        <img src="/api/placeholder/400/300" alt="Project 1" class="rounded-lg mb-4 w-full">
+                        <h3 class="text-xl font-bold mb-2">E-Commerce Platform</h3>
+                        <p class="text-gray-400">Modern e-commerce solution with AI-powered recommendations</p>
+                    </div>
+                </div>
+                <div class="gradient-border" data-aos="fade-up" data-aos-delay="100">
+                    <div class="p-6">
+                        <img src="/api/placeholder/400/300" alt="Project 2" class="rounded-lg mb-4 w-full">
+                        <h3 class="text-xl font-bold mb-2">Healthcare App</h3>
+                        <p class="text-gray-400">Mobile application for patient care management</p>
+                    </div>
+                </div>
+                <div class="gradient-border" data-aos="fade-up" data-aos-delay="200">
+                    <div class="p-6">
+                        <img src="/api/placeholder/400/300" alt="Project 3" class="rounded-lg mb-4 w-full">
+                        <h3 class="text-xl font-bold mb-2">AI Analytics Dashboard</h3>
+                        <p class="text-gray-400">Real-time analytics platform with predictive insights</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">Client Testimonials</h2>
+                <p class="text-gray-400">What our clients say about working with us</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial Cards -->
+                <div class="glass-card rounded-xl p-8" data-aos="fade-up">
+                    <div class="flex items-center mb-4">
+                        <img src="/api/placeholder/64/64" alt="Client 1" class="rounded-full w-16 h-16">
+                        <div class="ml-4">
+                            <h4 class="font-bold">Sarah Johnson</h4>
+                            <p class="text-blue-400">CEO, TechStart</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400">"AS Software Solutions transformed our business with their innovative solutions. Their team's expertise and dedication were exceptional."</p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-xl p-8" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <img src="/api/placeholder/64/64" alt="Client 2" class="rounded-full w-16 h-16">
+                        <div class="ml-4">
+                            <h4 class="font-bold">Michael Chen</h4>
+                            <p class="text-blue-400">CTO, Innovation Labs</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400">"The AI solution developed by AS Software has increased our efficiency by 200%. Their technical expertise is unmatched."</p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-xl p-8" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <img src="/api/placeholder/64/64" alt="Client 3" class="rounded-full w-16 h-16">
+                        <div class="ml-4">
+                            <h4 class="font-bold">Emma Davis</h4>
+                            <p class="text-blue-400">Product Manager, EcoTech</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400">"Working with AS Software was a game-changer for our startup. Their mobile app development expertise helped us reach new markets."</p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center" data-aos="fade-up">
+                    <div class="text-4xl font-bold gradient-text mb-2">100+</div>
+                    <p class="text-gray-400">Projects Completed</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-4xl font-bold gradient-text mb-2">50+</div>
+                    <p class="text-gray-400">Happy Clients</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-4xl font-bold gradient-text mb-2">5+</div>
+                    <p class="text-gray-400">Years Experience</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-4xl font-bold gradient-text mb-2">24/7</div>
+                    <p class="text-gray-400">Support Available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">Start Your Project</h2>
+                <p class="text-gray-400">Get in touch with us to discuss your next big idea</p>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="glass-card rounded-xl p-8" data-aos="fade-up">
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Name</label>
+                                <input type="text" class="w-full px-4 py-3 bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Your name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Email</label>
+                                <input type="email" class="w-full px-4 py-3 bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="your@email.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Project Type</label>
+                            <select class="w-full px-4 py-3 bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option>Web Development</option>
+                                <option>Mobile App Development</option>
+                                <option>AI/ML Solutions</option>
+                                <option>Chatbot Development</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Message</label>
+                            <textarea class="w-full px-4 py-3 bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" rows="4" placeholder="Tell us about your project"></textarea>
+                        </div>
+                        <button class="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-bold hover:shadow-lg transition-all transform hover:scale-105">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="why-choose-us" class="py-20 bg-gray-800 relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="tech-pattern"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">Why Choose AS Software Solutions?</h2>
+                <p class="text-gray-400 text-xl">Delivering Excellence Through Innovation</p>
+            </div>
+    
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature Cards -->
+                <div class="glass-card p-8 rounded-xl transform hover:scale-105 transition-all" data-aos="fade-up">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-rocket text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Rapid Development</h3>
+                    <p class="text-gray-400">Launch your project in record time with our agile development approach and experienced team.</p>
+                </div>
+    
+                <div class="glass-card p-8 rounded-xl transform hover:scale-105 transition-all" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Security First</h3>
+                    <p class="text-gray-400">Enterprise-grade security measures and compliance with international standards.</p>
+                </div>
+    
+                <div class="glass-card p-8 rounded-xl transform hover:scale-105 transition-all" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-clock text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">24/7 Support</h3>
+                    <p class="text-gray-400">Round-the-clock technical support and maintenance for your peace of mind.</p>
+                </div>
+            </div>
+    
+            <!-- Process Timeline -->
+            <div class="mt-20">
+                <h3 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Our Development Process</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="text-center" data-aos="fade-up">
+                        <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-lightbulb text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Discovery</h4>
+                        <p class="text-gray-400">Understanding your vision and requirements</p>
+                    </div>
+    
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-pencil-ruler text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Design</h4>
+                        <p class="text-gray-400">Creating the perfect user experience</p>
+                    </div>
+    
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-code text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Development</h4>
+                        <p class="text-gray-400">Building with cutting-edge technology</p>
+                    </div>
+    
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                        <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-rocket text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Launch</h4>
+                        <p class="text-gray-400">Deploying and scaling your solution</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Special Offer -->
+            <div class="mt-20 glass-card p-8 rounded-xl text-center" data-aos="fade-up">
+                <h3 class="text-3xl font-bold mb-4">Special Offer for New Projects</h3>
+                <p class="text-xl text-gray-400 mb-6">Get 20% off on your first project with us!</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                        <span>Free Consultation</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                        <span>Technical Assessment</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                        <span>Project Timeline</span>
+                    </div>
+                </div>
+                <a href="#contact" class="inline-block mt-8 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-bold hover:shadow-lg transition-all transform hover:scale-105">
+                    Claim Your Discount
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="relative">
+                            <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg"></div>
+                            <span class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold text-xl">AS</span>
+                        </div>
+                        <span class="text-2xl font-bold gradient-text">AS Software</span>
+                    </div>
+                    <p class="text-gray-400">Transforming ideas into digital reality with cutting-edge technology solutions.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-blue-400">Software Development</a></li>
+                        <li><a href="#" class="hover:text-blue-400">Web Development</a></li>
+                        <li><a href="#" class="hover:text-blue-400">Mobile Development</a></li>
+                        <li><a href="#" class="hover:text-blue-400">AI/ML Solutions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-blue-400">About Us</a></li>
+                        <li><a href="#" class="hover:text-blue-400">Careers</a></li>
+                        <li><a href="#" class="hover:text-blue-400">Blog</a></li>
+                        <li><a href="#" class="hover:text-blue-400">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-400 text-2xl">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 text-2xl">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 text-2xl">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 text-2xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 AS Software Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 0) {
+                nav.classList.add('nav-blur');
+            } else {
+                nav.classList.remove('nav-blur');
+            }
+        });
+    </script>
+</body>
+</html>
