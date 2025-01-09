@@ -1,30 +1,18 @@
+# main.py
 import os
-from company.wsgi import application
+from django.core.wsgi import get_wsgi_application
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'company.settings')
+app = get_wsgi_application()  # This creates the 'app' that Gunicorn is looking for
 
 if __name__ == "__main__":
-    app = application
+    from gunicorn.app.wsgiapp import WSGIApplication
+    
     port = int(os.environ.get("PORT", 8080))
-    
-    # Import and configure gunicorn
-    import gunicorn.app.base
-    
-    class StandaloneApplication(gunicorn.app.base.BaseApplication):
-        def __init__(self, app, options=None):
-            self.options = options or {}
-            self.application = app
-            super().__init__()
-
-        def load_config(self):
-            for key, value in self.options.items():
-                self.cfg.set(key.lower(), value)
-
-        def load(self):
-            return self.application
-
     options = {
         'bind': f'0.0.0.0:{port}',
         'workers': 2,
         'timeout': 120,
     }
-
-    StandaloneApplication(app, options).run()
+    
+    WSGIApplication("%(prog)s [OPTIONS] %s" % "main:app").run()
