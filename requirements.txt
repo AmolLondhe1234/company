@@ -1,7 +1,6 @@
 asgiref
 Django>=5.0.8 
 python-dateutil
-
 sqlparse
 tzdata
 secure-smtplib
